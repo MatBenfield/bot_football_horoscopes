@@ -1,16 +1,14 @@
 <?php
-	require_once ('twitteroauth.php');
-	require_once( 'cron.class.php' );
-	/**********************************************************************************************/
+     require_once ('twitteroauth.php');
+     require_once( 'cron.class.php' );
+     /**********************************************************************************************/
 	$CronDB = new CronDB();
-
-    $zodiac     = array("Aries","Taurus","Gemini","Cancer","Leo","Virgo","Libra","Scorpio","Sagittarius","Capricorn","Aquarius","Pisces");
-    $house      = array("1st","10th","7th","4th");
-    $adjOrb     = array("first quarter","last quarter","ascending","rising","descending","waxing","waning","gibbous","gibbons");
-    $planet     = array("Moon","Sun","Jupiter","Venus","Mercury","Mars","Neptune","Saturn","Pluto","Uranus");
-    $team       = array("Arsenal","Bournemouth","Chelsea","Palace","Man Utd","Man City","Villa","Stoke","Norwich","Leicester",
-			"Everton","West Ham","Liverpool","Spurs","Sunderland","Newcastle","West Brom","Watford","Southampton","Swansea");
-    $suffix     = array(
+	$zodiac     = array("Aries","Taurus","Gemini","Cancer","Leo","Virgo","Libra","Scorpio","Sagittarius","Capricorn","Aquarius","Pisces");
+	$house      = array("1st","10th","7th","4th");
+	$adjOrb     = array("first quarter","last quarter","ascending","rising","descending","waxing","waning","gibbous","gibbons");
+	$planet     = array("Moon","Sun","Jupiter","Venus","Mercury","Mars","Neptune","Saturn","Pluto","Uranus");
+	$team       = array("Arsenal","Bournemouth","Chelsea","Palace","Man Utd","Man City","Villa","Stoke","Norwich","Leicester",			"Everton","West Ham","Liverpool","Spurs","Sunderland","Newcastle","West Brom","Watford","Southampton","Swansea");
+	$suffix     = array(
 	                "look to #team#'s press conference for guidance",
                         "watch out for #team#'s defensive errors",
 	                "consider betting on the opposite of Lawro's #team# prediction",
