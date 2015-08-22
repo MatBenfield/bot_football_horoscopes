@@ -45,7 +45,7 @@
 			"#adjOrb# #planet# and #zodiac# in your #house# house. #suffix#",
 			"#planet# in #zodiac#. #suffix#",
 			"parked bus on #planet# in #zodiac#. means you should #suffix#",
-			"#adjOrb# #planet# in #house# house means you muse #suffix#",
+			"#adjOrb# #planet# in #house# house means you must #suffix#",
 			"#adjOrb# #planet# in #zodiac# and your #house# house. You may #suffix#",
 			"#planet#-#planet2# alignment. You may #suffix#",
 			"A defensive minded #planet# in #zodiac# means it's time to #suffix#",
