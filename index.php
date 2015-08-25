@@ -6,7 +6,7 @@ $pdo 	= new CronDB();
 $zodiac = array("Aries","Taurus","Gemini","Cancer","Leo","Virgo","Libra","Scorpio","Sagittarius","Capricorn","Aquarius","Pisces");
 $house  = array("1st",",2nd","8th","9th","10th","7th","4th","853rd");
 $adjOrb = array("first quarter","second quarter","last quarter","ascending","rising","descending","waxing","waning","gibbous","gibbons");
-$planet = array("Moon","Sun","Jupiter","Venus","Mercury","Mars","Neptune","Saturn","Pluto","Uranus");
+$planet = array("Moon","Sun","stars","Jupiter","Venus","Mercury","Mars","Neptune","Saturn","Pluto","Uranus");
 $team   = array("Arsenal","Bournemouth","Chelsea","Palace","Man Utd","Man City","Villa","Stoke","Norwich","Leicester","Everton","West Ham","Liverpool","Spurs","Sunderland","Newcastle","West Brom","Watford","Southampton","Swansea");
 $suffix = array(
 	"look to #team#'s press conference for guidance",
@@ -46,11 +46,12 @@ $phrasing = array (
 	"#adjOrb# #planet# in your #house# house. #suffix#",
 	"#adjOrb# #planet# in #zodiac#. #suffix#",
 	"Opposition between #planet# and #planet2# could result in the need to #suffix#",
-	"Alignment between #planet# and #planet2# could result in the need to #suffix#",
+	"Alignment between #planet# and #planet2# could bring about the need to #suffix#",
+	"Misplaced passing between #planet# and #planet2# could breed thoughts that forces you to #suffix#",
 	"#planet# in #zodiac# and your #house# house urges for real pace but #suffix#",
 	"#adjOrb# #planet# and #zodiac# in your #house# house. #suffix#",
 	"#planet# in #zodiac#. #suffix#",
-	"parked bus on #planet# in #zodiac#. means you should #suffix#",
+	"Parked bus on #planet# in #zodiac#. means you should #suffix#",
 	"#adjOrb# #planet# in #house# house means you must #suffix#",
 	"#adjOrb# #planet# in #zodiac# and your #house# house. You may #suffix#",
 	"#planet#-#planet2# alignment. You may #suffix#",
@@ -60,8 +61,19 @@ $phrasing = array (
 	"#adjOrb# #planet# in #house# house. You should #suffix#",
 	"#adjOrb# #planet# in #zodiac#. You should #suffix#",
 	"#planet#-#planet2# alignment focuses you to #suffix#"
+	"#adjOrb# puts you on high alert, consider an appeal to the FA",
+	"#adjOrb# puts you in a touchy mood, try to avoid #team#'s medical staff",
+	"Today you will find yourself under the kosh as #team# dominates your box",
+	"Today there is a strong indication #team# will be linked to a big money signing. Warchest",
+	"#adjOrb# puts you in a position of conflict, family or football. Only you can decide",
+	"#planet#-#planet2# alignment gives you motivation to #suffix#",
+	"#adjOrb# #planet# in #zodiac# and your #house# house gives motivation to #suffix#",
+	"Windfall! there is a strong indication #team#'s star player will fall over at the slighest gust of wind",
+	"You are not alone, there are support charities if you support #team# and they are getting you down"
 );
+
 foreach($zodiac as $sign) {
+
 	$key    = array_rand( $phrasing, 1 );
 	$string = $phrasing[$key];
 	$string = str_replace( '#zodiac#'  , $pdo->getValueFromKey( $zodiac ) , $string );
@@ -74,5 +86,5 @@ foreach($zodiac as $sign) {
 	$string = str_replace( '#suffix#'  , $pdo->getValueFromKey( $suffix ) , $string );
 	$string = str_replace( '#team#'    , $pdo->getValueFromKey( $team   ) , $string );
 	$pdo->Tweet( $sign .' - '. $string );
-	sleep (120);
+	sleep (60);
 }
