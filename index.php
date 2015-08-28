@@ -74,7 +74,7 @@ $phrasing = array (
 	"It's a difficult day if you support #team#, try not to burn your own town",
 	"Opposition between #planet# and #planet2# could result in the need to #suffix#",
 	"Alignment between #planet# and #planet2# could bring about the need to #suffix#",
-	"Misplaced passing between #planet# and #planet2# could breed thoughts that forces you to #suffix#",
+	"Misplaced passing between #planet# and #planet2# could need you to #suffix#",
 	"Windfall! there is a strong indication #team#'s star player will fall over at the slightest gust of wind",
 	"You are not alone, there are support charities if you are a fan of #team# and they are getting you down"
 );
