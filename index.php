@@ -40,12 +40,17 @@ $suffix = array(
 $phrasing = array (
 	"Today's #planet#-#planet2# opposition could force you to #suffix#",
 	"Today's #planet#-#planet2# match-up may remind you to #suffix#",
+	"Today's #planet#-#planet2# alignment to point you to #suffix#",
+	"Today's #planet#-#planet2# positioning to point you to #suffix#",
+	"Today's #planet# and #planet2# arranged to tempt you to #suffix#",
+	"Today's #planet# tomorrow's #planet2# are combining could tempt you to #suffix#",
 	"Today's #adjOrb# #planet# in #zodiac# suggests you should #suffix#",
 	"Today's #adjOrb# #planet# in #zodiac# suggests you should avoid the #team# match, there is a wanker with a drum",
 	"Today's #planet# in #zodiac# aligns so you may #suffix#",
 	"Today's #adjOrb# #planet# in #zodiac#. don't forget to #suffix#",
 	"Today's #adjOrb# #planet# in #zodiac# is the clearest indication that red trousers are not for you",
 	"Today you will find yourself under the cosh as #team# dominates your box",
+	"Today's #zodiac# and #zodiac2# alignment make spark fantasies of long-haired midfielders",
 	"Today there is a strong indication #team# will be linked to a big money signing. War chest",
 	"The #adjOrb# #planet# in your #house# house of full backs means you should #suffix#",
 	"The #planet#-#planet2# opposition could give rise to a bad moment. You must #suffix#",
@@ -59,7 +64,6 @@ $phrasing = array (
 	"#planet#-#planet2# alignment gives you motivation to #suffix#",
 	"#planet# in #zodiac# and your #house# house gives motivation to #suffix#",
 	"#adjOrb# #planet# and #zodiac# in your #house# house. #suffix#",
-	"Jamie Redknapp and #zodiac# in your #house# house, try to avoid conflict intellectually.",
 	"#adjOrb# #planet# in #house# house means you must #suffix#",
 	"#adjOrb# #planet# in #zodiac# and your #house# house. You may #suffix#",
 	"#adjOrb# #planet# in your #house# house #suffix#",
@@ -68,6 +72,7 @@ $phrasing = array (
 	"#adjOrb# #planet# puts you in a touchy mood, try to avoid #team#'s medical staff",
 	"#adjOrb# #planet# in #house# house. You should #suffix#",
 	"#adjOrb# #planet# in #zodiac#. You should #suffix#",
+	"#adjOrb# #planet# in your patriotic sector, the UEFA Coefficient has you feeling the pressure",
 	"#adjOrb# #planet# in #zodiac#. As a big team heads north for a tricky away day, expect fireworks",
 	"#adjOrb# #planet# in #zodiac#. #team# should avoid using the double pivot",
 	"#adjOrb# #planet# puts you in a position of conflict, family or football. Only you can decide",
@@ -78,18 +83,21 @@ $phrasing = array (
 	"An attacking focus on this #adjOrb# #planet# in #zodiac# means you could #suffix#",
 	"A counter-attacking focus on this #adjOrb# #planet# in #zodiac# means you should #suffix#",
 	"Parked bus on #planet# in #zodiac#. means you should #suffix#",
+	"A chance encounter with right back in your DIY sector, rewards you with a B&Q toilet seat",
 	"Misaligned #planet# makes rising star put in a transfer request at the 11th hour. Rat.",
 	"It's a difficult day if you support #team#, try not to burn your own town",
 	"Opposition between #planet# and #planet2# could result in the need to #suffix#",
 	"Alignment between #planet# and #planet2# could bring about the need to #suffix#",
+	"Jamie Redknapp and #zodiac# in your #house# house, try to avoid conflict intellectually.",
 	"Misplaced passing between #planet# and #planet2# could breed thoughts that forces you to #suffix#",
 	"Windfall! there is a strong indication #team#'s star player will fall over at the slightest gust of wind",
-	"You are not alone, there are support charities if you are a fan of #team# and they are getting you down"
+	"You are not alone! There are support charities if you are a fan of #team# and they are getting you down"
 );
 foreach($zodiac as $sign) {
 	$key    = array_rand( $phrasing, 1 );
 	$string = $phrasing[$key];
 	$string = str_replace( '#zodiac#'  , $cron->getValueFromKey( $zodiac ) , $string );
+	$string = str_replace( '#zodiac2#' , $cron->getValueFromKey( $zodiac ) , $string );
 	$string = str_replace( '#team#'    , $cron->getValueFromKey( $team   ) , $string );
 	$string = str_replace( '#adjOrb#'  , $cron->getValueFromKey( $adjOrb ) , $string );
 	$string = str_replace( '#house#'   , $cron->getValueFromKey( $house  ) , $string );
