@@ -14,7 +14,8 @@
 				$connection = new TwitterOAuth(**,**,**,**); // redacted
 				$connection->get('account/verify_credentials');
 				$connection->post('statuses/update',array('status' => $message));
-			}
+		}
+		
 		public function getValueFromKey($array) {
 			$rand_key = array_rand($array, 1);
 			$value = $array[$rand_key];
