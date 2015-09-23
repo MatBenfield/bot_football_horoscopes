@@ -5,8 +5,8 @@ require_once ('cron.class.php');
 $cron 	= new CronDB();
 
 // 12 signs of the zodiac
-$zodiac = array("Aries","Taurus","Gemini","Cancer","Leo","Virgo","Libra","Scorpio",
-                "Sagittarius","Capricorn","Aquarius","Pisces");
+$zodiac = array("Aries","Taurus","Gemini","Cancer","Leo","Virgo","Libra",
+                "Scorpio","Sagittarius","Capricorn","Aquarius","Pisces");
                 
 // Some house, low numbers and a silly high one
 $house  = array("1st","2nd","3rd","4th","5th","6th","7th","8th","9th","10th","11th","12th","853rd");
