@@ -3,17 +3,24 @@ require_once ('twitteroauth.php');
 require_once ('cron.class.php');
 /**********************************************************************************************/
 $cron 	= new CronDB();
+
 // 12 signs of the zodiac
-$zodiac = array("Aries","Taurus","Gemini","Cancer","Leo","Virgo","Libra","Scorpio","Sagittarius","Capricorn","Aquarius","Pisces");
+$zodiac = array("Aries","Taurus","Gemini","Cancer","Leo","Virgo","Libra","Scorpio",
+                "Sagittarius","Capricorn","Aquarius","Pisces");
+                
 // Some house, low numbers and a silly high one
-$house  = array("1st","2nd","3rd","4th","8th","1st","2nd","3rd","4th","8th","9th","10th","7th","4th","853rd");
+$house  = array("1st","2nd","3rd","4th","5th","6th","7th","8th","9th","10th","11th","12th","853rd");
+
 // Moon types
 $adjOrb = array("first quarter","last quarter","ascending","rising","descending","waxing","waning","gibbous","gibbons");
+
 // Planets
 $planet = array("Moon","Sun","Jupiter","Venus","Mercury","Mars","Neptune","Saturn","Pluto","Uranus");
+
 // Premier League teams
-$team   = array("Arsenal","Bournemouth","Chelsea","Palace","Man Utd","Man City","Villa","Stoke","Norwich","Leicester","Everton",
-                "West Ham","Liverpool","Spurs","Sunderland","Newcastle","West Brom","Watford","Southampton","Swansea");
+$team   = array("Arsenal","Bournemouth","Chelsea","Palace","Man Utd","Man City","Villa","Stoke",
+                "Norwich","Leicester","Everton", "West Ham","Liverpool","Spurs","Sunderland",
+                "Newcastle","West Brom","Watford","Southampton","Swansea");
 // Suffixes
 $suffix = array(
     "harness the energy of #team#'s star player",
@@ -47,6 +54,7 @@ $suffix = array(
     "think about #team#'s injured, heavy smoking midfielder",
     "think about #team#'s poor disciplinary record",
 );
+
 // Main Phrases, some with suffixes some without
 $phrasing = array (
     "Today's #planet#-#planet2# opposition could force you to #suffix#",
