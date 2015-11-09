@@ -73,7 +73,7 @@ $phrasing = array (
     "#planet# in #zodiac# and your #house# house urges for real pace but #suffix#",
     "#planet#-#planet2# alignment. You may #suffix#",
     "#planet# in #zodiac#. #suffix#",
-    "#planet# in #zodia# prompts you to ignore Niall Quinn's unsure and ever changing opinion on #team#'s performance. TV replays notwithstanding",
+    "#planet# in #zodiac# prompts you to ignore Niall Quinn's unsure and ever changing opinion on #team#'s performance. TV replays notwithstanding",
     "#planet#-#planet2# alignment focuses you to #suffix#",
     "#planet#-#planet2# alignment gives you motivation to #suffix#",
     "#planet# in #zodiac# and your #house# house gives motivation to #suffix#",
