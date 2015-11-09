@@ -7,7 +7,7 @@ $cron 	= new CronDB();
 // 12 signs of the zodiac
 $zodiac = array("Aries","Taurus","Gemini","Cancer","Leo","Virgo","Libra",
                 "Scorpio","Sagittarius","Capricorn","Aquarius","Pisces");
-                
+
 // Some house, low numbers and a silly high one
 $house  = array("1st","2nd","3rd","4th","5th","6th","7th","8th","9th","10th","11th","12th","853rd");
 
@@ -113,7 +113,6 @@ $phrasing = array (
 );
 
 foreach($zodiac as $sign) {
-
     $key    = array_rand( $phrasing, 1 );
     $string = $phrasing[$key];
     $string = str_replace( '#zodiac#'  , $cron->getValueFromKey( $zodiac ) , $string );
@@ -121,8 +120,11 @@ foreach($zodiac as $sign) {
     $string = str_replace( '#adjOrb#'  , $cron->getValueFromKey( $adjOrb ) , $string );
     $string = str_replace( '#house#'   , $cron->getValueFromKey( $house  ) , $string );
     $string = str_replace( '#house2#'  , $cron->getValueFromKey( $house  ) , $string );
-    $string = str_replace( '#planet#'  , $cron->getValueFromKey( $planet ) , $string );
-    $string = str_replace( '#planet2#' , $cron->getValueFromKey( $planet ) , $string );
+    $first_planet = $cron->getValueFromKey( $planet );
+    // array_diff return the $planet array without the $first_planet
+    $second_planet = $cron->getValueFromKey(array_diff($planet, (array)$first_planet));
+    $string = str_replace( '#planet#'  , $first_planet, $string );
+    $string = str_replace( '#planet2#' , $second_planet, $string );
     $string = str_replace( '#suffix#'  , $cron->getValueFromKey( $suffix ) , $string );
     $string = str_replace( '#team#'    , $cron->getValueFromKey( $team   ) , $string );
     $cron->goTweet( $sign .' - '. $string ,'horo' );
