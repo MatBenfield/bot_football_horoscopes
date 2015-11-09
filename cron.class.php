@@ -16,9 +16,9 @@
 				$connection->post('statuses/update',array('status' => $message));
 		}
 		
-		public function getValueFromKey($array) {
+		public function getValueFromKey(&$array) {
 			$rand_key = array_rand($array, 1);
-			$value = $array[$rand_key];
+			$value = array_pop($rand_key);
 			return $value;
 		}
 	}
