@@ -1,6 +1,6 @@
 <?php
-require_once ('twitteroauth.php');
-require_once ('cron.class.php');
+require_once 'twitteroauth.php';
+require_once 'cron.class.php';
 /**********************************************************************************************/
 $cron 	= new CronDB();
 
@@ -112,19 +112,29 @@ $phrasing = array (
     "Looks like #planet# in #zodiac# means #team# are on the up."
 );
 
+function getRandomValues($array, $n) {
+	return array_rand(array_flip($array), $n);
+}
+
 foreach($zodiac as $sign) {
 
     $key    = array_rand( $phrasing, 1 );
     $string = $phrasing[$key];
+	
+	$randHouses  = getRandomValues( $house  , 2);
+	$randPlanets = getRandomValues( $planet , 2);
+	
     $string = str_replace( '#zodiac#'  , $cron->getValueFromKey( $zodiac ) , $string );
     $string = str_replace( '#team#'    , $cron->getValueFromKey( $team   ) , $string );
     $string = str_replace( '#adjOrb#'  , $cron->getValueFromKey( $adjOrb ) , $string );
-    $string = str_replace( '#house#'   , $cron->getValueFromKey( $house  ) , $string );
-    $string = str_replace( '#house2#'  , $cron->getValueFromKey( $house  ) , $string );
-    $string = str_replace( '#planet#'  , $cron->getValueFromKey( $planet ) , $string );
-    $string = str_replace( '#planet2#' , $cron->getValueFromKey( $planet ) , $string );
     $string = str_replace( '#suffix#'  , $cron->getValueFromKey( $suffix ) , $string );
     $string = str_replace( '#team#'    , $cron->getValueFromKey( $team   ) , $string );
+	
+	$string = str_replace( '#house#'   , $randHouses[0]  , $string );
+    $string = str_replace( '#house2#'  , $randHouses[1]  , $string );
+    $string = str_replace( '#planet#'  , $randPlanets[0] , $string );
+    $string = str_replace( '#planet2#' , $randPlanets[1] , $string );
+	
     $cron->goTweet( $sign .' - '. $string ,'horo' );
     $cron->slack( $sign .' - '. $string ,'HoroBot','sun_with_face');
     sleep (60);
