@@ -1,6 +1,6 @@
 <?php
-require_once 'twitteroauth.php';
-require_once 'cron.class.php';
+require_once ('twitteroauth.php');
+require_once ('cron.class.php');
 /**********************************************************************************************/
 $cron 	= new CronDB();
 
@@ -40,10 +40,13 @@ $suffix = array(
     "worry about #team#'s high number of instagram selfies",
     "worry about #team#'s high intensity runs",
     "worry about #team#'s high profile player unfollowing the club on twitter",
+    "worry about #team#'s squad player liking their own transfer rumour on instagram",
+    "worry about #team#'s unused player refusing to sit on the bench",
     "worry about #team#'s lack of high intensity runs",
     "worry about #team# qualifying for the Europa League",
     "worry about #team# trying to utilise the douple pivot",
     "find #team# will perform for you",
+    "find ex-referee is outspoken about #team#'s level of respect",
     "find #team# will disappoint you",
     "find #team# will mostly be drawn offside",
     "find #team# cannot defend effectively",
@@ -53,6 +56,8 @@ $suffix = array(
     "think about #team#'s leadership, character, and experience",
     "think about #team#'s injured, heavy smoking midfielder",
     "think about #team#'s poor disciplinary record",
+    "think about #team#'s decision to consider employing Tim Sherwood",
+    "think about #team#'s decision to consider employing AVB",
 );
 
 // Main Phrases, some with suffixes some without
@@ -60,12 +65,15 @@ $phrasing = array (
     "Today's #planet#-#planet2# opposition could force you to #suffix#",
     "Today's #planet#-#planet2# match-up may remind you to #suffix#",
     "Today's #adjOrb# #planet# in #zodiac# suggests you should #suffix#",
+    "Today's #adjOrb# #planet# on the dark side of #zodiac# suggests you should #suffix#",
     "Today's #adjOrb# #planet# in #zodiac# suggests you should avoid the #team# match, there is a wanker with a drum",
     "Today's #planet# in #zodiac# aligns so you may #suffix#",
     "Today's #adjOrb# #planet# in #zodiac#. don't forget to #suffix#",
     "Today's #adjOrb# #planet# in #zodiac# is the clearest indication that red trousers are not for you",
     "Today you will find yourself under the cosh as #team# dominates your box",
+    "Today you will find yourself waving your imaginary card at #team#",
     "Today there is a strong indication #team# will be linked to a big money signing. War chest",
+    "Today there is a strong indication #team# will be sending someone out on loan. when will it end?",
     "The #adjOrb# #planet# in your #house# house of full backs means you should #suffix#",
     "The #planet#-#planet2# opposition could give rise to a bad moment. You must #suffix#",
     "#planet# in your #house# house and #planet2# in the #house2# house brings you to #suffix#",
@@ -81,6 +89,7 @@ $phrasing = array (
     "#adjOrb# #planet# and #zodiac# in your #house# house. #suffix#",
     "#adjOrb# #planet# in #house# house means you must #suffix#",
     "#adjOrb# #planet# in #zodiac# and your #house# house. You may #suffix#",
+    "#adjOrb# #planet# and your #house# house. You may #suffix#",
     "#adjOrb# #planet# in your #house# house #suffix#",
     "#adjOrb# #planet# in #zodiac#. #suffix#",
     "#adjOrb# #planet# puts you on high alert, consider an appeal to the FA",
@@ -92,7 +101,9 @@ $phrasing = array (
     "#adjOrb# #planet# puts #team# in crisis, there are clear-the-air talks, it's a complete meltdown",
     "#adjOrb# #planet# in your #house# house has Martin Keown in your neighbourhood, it's ok to phone the police/zoo",
     "#adjOrb# #planet# in #zodiac# is a gentle reminder keep your Thursdays and Sundays free",
+    "With the #adjOrb# #planet# in your sleep sector, insomniacs should try watching #team#",    
     "With the #adjOrb# #planet# in your fitness sector, enjoy two pies at your next game",
+    "With the #adjOrb# #planet# in your giant hands talking nonsense sector, try to avoid Niall Quinn",
     "With the #adjOrb# #planet# in your faith sector, a chance encounter with Glenn Hoddle reminds you how to behave in this life",
     "With the #adjOrb# #planet# sparks a lucky streak, Peter Reid is at the bar and he'll get a round in",
     "With the #adjOrb# #planet# in your education sector, remember laminated signs of discontent or banter are to be destroyed",
@@ -112,28 +123,24 @@ $phrasing = array (
     "Looks like #planet# in #zodiac# means #team# are on the up."
 );
 
-function getRandomValues($array, $n) {
-	return array_rand(array_flip($array), $n);
-}
-
 foreach($zodiac as $sign) {
 
     $key    = array_rand( $phrasing, 1 );
     $string = $phrasing[$key];
-	
-	$randHouses  = getRandomValues( $house  , 2);
-	$randPlanets = getRandomValues( $planet , 2);
+
+	$randHouses  = $cron->getValuesFromArray( $house  , 2);
+	$randPlanets = $cron->getValuesFromArray( $planet , 2);
 	
     $string = str_replace( '#zodiac#'  , $cron->getValueFromKey( $zodiac ) , $string );
     $string = str_replace( '#team#'    , $cron->getValueFromKey( $team   ) , $string );
     $string = str_replace( '#adjOrb#'  , $cron->getValueFromKey( $adjOrb ) , $string );
     $string = str_replace( '#suffix#'  , $cron->getValueFromKey( $suffix ) , $string );
     $string = str_replace( '#team#'    , $cron->getValueFromKey( $team   ) , $string );
-	
+
 	$string = str_replace( '#house#'   , $randHouses[0]  , $string );
-    $string = str_replace( '#house2#'  , $randHouses[1]  , $string );
-    $string = str_replace( '#planet#'  , $randPlanets[0] , $string );
-    $string = str_replace( '#planet2#' , $randPlanets[1] , $string );
+	$string = str_replace( '#house2#'  , $randHouses[1]  , $string );
+	$string = str_replace( '#planet#'  , $randPlanets[0] , $string );
+	$string = str_replace( '#planet2#' , $randPlanets[1] , $string );
 	
     $cron->goTweet( $sign .' - '. $string ,'horo' );
     $cron->slack( $sign .' - '. $string ,'HoroBot','sun_with_face');
