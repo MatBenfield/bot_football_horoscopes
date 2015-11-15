@@ -18,7 +18,10 @@
 		
 		public function getValueFromKey(&$array) {
 			$rand_key = array_rand($array, 1);
-			$value = array_pop($rand_key);
-			return $value;
+			return = array_pop($rand_key);
+		}
+		
+		public function getValuesFromArray($array, $n) {
+			return array_rand(array_flip($array), $n);
 		}
 	}
