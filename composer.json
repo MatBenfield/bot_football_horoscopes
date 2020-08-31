@@ -1,9 +1,0 @@
-{
-    "name": "chelseastats/football-horoscopes",
-    "description": "Football horoscope Twitter bot. Tweets twelve times per day.",
-    "require": {
-        "abraham/twitteroauth": "^0.6.2"
-    },
-    "license": "The Unlicense",
-    "authors": "https://github.com/ChelseaStats/football-horoscopes/graphs/contributors"
-}
