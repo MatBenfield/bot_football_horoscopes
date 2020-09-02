@@ -1,8 +1,4 @@
 <?php
-	require_once( dirname(__DIR__).'/autoload.php');
-	$go = new utility();
-	$melinda = new melinda();
-	
 	/**
 	 * Zodiac signs.
 	 * https://en.wikipedia.org/wiki/Astrological_sign
@@ -28,7 +24,7 @@
 	 * transitive words
 	 * @var array
 	 */
-	$gerund = array("progressing","transitioning","eclipsing","aspecting","retrograding","falling","growing","changing","rising");
+	$gerund = array("progressing","transitioning","eclipsing","asserting","retrograding","falling","growing","changing","rising");
 
 	/**
 	 * Planets in our solar system.
@@ -42,8 +38,9 @@
 	 * https://en.wikipedia.org/wiki/2015%E2%80%9316_Premier_League
 	 * @var array
 	 */
-	$team   = array("Arsenal","Bournemouth","Chelsea","Palace","Man Utd","Man City","Stoke","Burnley","Leicester","Everton",
-			"West Ham","Liverpool","Spurs","Sunderland", "Boro","West Brom","Watford","Southampton","Swansea","Hull");
+	$team   = array("Arsenal", "Aston Villa", "Brighton", "Burnley", "Chelsea", "Palace", "Man Utd", "Man City",
+					"Leeds", "Leicester", "Everton", "West Ham", "Liverpool", "Spurs", "West Brom",
+					"Watford", "Southampton", "Newcastle", "Wolves", "Fulham");
 
 	/**
 	 * Suffixes.
@@ -173,7 +170,7 @@
 		"With today's #planet# in #zodiac# be careful what you say about #team#, their fans get upset easily",
 		"With today's #planet# allocated to #zodiac# do question if that is all #team# take away",
 		"With today's #planet# in #zodiac# a brief encounter with a youth player from #team# is on the cards",
-			
+
 	);
 
 	$counter = 0;
