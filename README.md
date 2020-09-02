@@ -1,5 +1,7 @@
 # Football Horoscopes
 
+![Daily Build](https://github.com/MatBenfield/bot_football_horoscopes/workflows/Daily%20Build/badge.svg) ![Pylint](https://github.com/MatBenfield/bot_football_horoscopes/workflows/Pylint/badge.svg)
+
 A Twitter bot that tweets 12 times per day, once for each star sign, and uses a handful of arrays to generate random football horoscopes.
 
 ## How It Works
