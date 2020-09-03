@@ -163,18 +163,18 @@ total_output = ""
 # processing
 for sign in signs :
  dic = {
-	    "#zodiac#"  : sign,
-	    "#adjOrb#"  : random.choice(adjOrbs),
-	    "#suffix#"  : random.choice(suffixes),
-		"#gerund#"  : random.choice(gerunds),
-		"#house#"   : random.choice(houses),
-		"#house2#"  : random.choice(houses),
-		"#planet#"  : random.choice(planets),
-		"#planet2#" : random.choice(planets),
+    "#zodiac#"  : sign,
+    "#adjOrb#"  : random.choice(adjOrbs),
+    "#suffix#"  : random.choice(suffixes),
+    "#gerund#"  : random.choice(gerunds),
+    "#house#"   : random.choice(houses),
+    "#house2#"  : random.choice(houses),
+    "#planet#"  : random.choice(planets),
+    "#planet2#" : random.choice(planets),
 		}
  output_string = multiple_replace(dic, random.choice(phrasing))
  output_string = output_string.replace("#club#", random.choice(teams))
- total_output += ("<h2>" + sign + "</h2> - <p>" + output_string + "</p>")
+ total_output += ("<h2>" + sign + "</h2><p>" + output_string + "</p>")
 
 print(total_output)
 
