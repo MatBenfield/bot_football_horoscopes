@@ -1,6 +1,6 @@
 # Football Horoscopes
 
-![Daily Build](https://github.com/MatBenfield/horofootball.thechels.uk/workflows/Daily%20Build/badge.svg) ![Pylint](https://github.com/MatBenfield/horofootball.thechels.uk/workflows/Pylint/badge.svg)
+![Daily Build](https://github.com/MatBenfield/horofootball.thechels.uk/workflows/Daily%20Build/badge.svg) ![Linter](https://github.com/MatBenfield/horofootball.thechels.uk/workflows/Linter/badge.svg)
 
 A python script that generates once per day for each star sign, and uses a handful of arrays to generate random football horoscopes.
 
